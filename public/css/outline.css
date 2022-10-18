@@ -1,0 +1,253 @@
+html{
+  background-color: white;
+  background-image: url(../pic/fPAsV1.jpg);
+  animation: 50s scroll linear infinite;
+  z-index: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes scroll {
+  0% {
+    background-position: 0% 0%;
+  }12% {
+    background-position: 12% 12%;
+  }24% {
+    background-position: 24% 24%;
+  }36% {
+    background-position: 36% 36%;
+  }48% {
+    background-position: 46% 46%;
+  }60% {
+    background-position: 55% 55%;
+  }72% {
+    background-position: 65% 65%;
+  }84% {
+      background-position: 77% 77%;
+  }92% {
+    background-position: 89% 89%;
+  }100% {
+    background-position: 100% 100%;
+  }
+  }
+
+header{
+  position: fixed;
+  width: 40%;
+  z-index: 5;
+}
+header .navigation{
+  width: 100%;
+  padding-right:10%;
+  padding-bottom: 2%;
+  flex-wrap: wrap;
+  color: blueviolet;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5vmax;
+  font-weight: 500;
+  font-family: monospace;
+  border-bottom: 5px solid black;
+  border-radius: 0px 0px 16vmax 0px;
+  box-shadow: 0px 0px 12px black;
+  background-color: rgba(265, 165, 0, 0.25);
+}
+header .navigation a{
+  align-self: center;
+}
+header .navigation a:hover{
+  text-decoration: none;
+}
+
+body{
+  background-color: rgba(265, 165, 0, 0.25);
+}
+.start-page{
+  z-index: 1;
+  position: relative;
+  background-image: url(../pic/sunset-home-office-working-with-laptop-on-the-garden-picjumbo-com.jpg);
+  animation: none;
+  background-size:cover;
+  padding-left:36%;
+  padding-right: 36%;
+  padding-top:32%;
+  padding-bottom: 15%;
+  text-align: center;
+}
+.start-page h2{
+  font-size: 2.5vmax;
+  color: whitesmoke;
+}
+.start-page p{
+  font-size: 1.7vmax;
+  color: whitesmoke;
+}
+
+.projects{
+  color:#85d04a;
+}
+.projects h3{
+  text-align: center;
+  font-size: 2.1vw;
+}
+.projects ul{
+  display:flex;
+  justify-content: space-around;
+  padding:1%;
+  text-align: center;
+}
+.projects li{
+  box-shadow: 0 0 15px #85d04a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width:13%;
+  margin:3%;
+  padding: 1%;
+  background-color: white;
+  border:1px solid #85d04a;
+  border-radius: 15px;
+  font-size: 1.7vw;
+}
+
+.projects li a{
+  justify-content: center;
+  background-color: white;
+}
+.projects li h4{
+  font-size: 1.9vw;
+}
+
+/* .skills{
+  color: #300000;
+  background-size: cover;
+}
+
+.skills dl{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  padding: 3%;
+  flex-direction: row;
+}
+
+.skills div{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  box-shadow: 0px 0px 12px black;
+  width:250px;
+  height: 150px;
+  border-radius: 15px;
+  padding: 3% 5%;
+  margin:3%;
+  color: #00a000;
+}
+
+.skills dd{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: center;
+  justify-content: flex-start;
+  margin: 3%;
+  padding-left:15%;
+} */
+
+.skills table {
+  color: #00a000;
+  margin: 5%;
+}
+.skills th{
+  border: 1px solid black;
+  box-shadow: 0px 0px 6px green;
+  border-radius: 15px;
+  background-color: rgba(265, 165, 0, 0.25);
+}
+.skills td{
+  border: 1px solid green;
+  box-shadow: 0px 0px 6px green;
+  border-radius: 15px;
+  margin:3%;
+  text-align: center;
+}
+.skills h4{
+  font-size: 1.9vw;
+}
+.skills h3{
+  font-size: 2.1vw;
+}
+.skills table .class1{
+  color: rgb(100, 0, 255);
+}
+
+.adage{
+  width: 40%;
+  margin-right: 60%;
+  margin: left;
+  border: 3px inset black;
+  border-radius: 10px 10px 10px 10px;
+  justify-content:left;
+  display: flex;
+}
+
+.char-picture{
+    align-content: center;
+    display: flex;
+    justify-content: space-around;
+    color: rgb(100, 0, 255);
+}
+
+@media (max-width:600px){
+  .char-picture{
+    display: none;
+  }
+}
+
+.code h3{
+  text-align: center;
+  font-size: 2.1vw;
+  color: #85d04a;
+}
+
+@media (max-width:650px){
+  .code{
+    display: none;
+  }
+}
+
+.formula{
+  width: 40%;
+  margin-left: 60%;
+  margin: right;
+  border-radius: 10px 10px 10px 10px;
+  border: 3px outset black;
+  align-content: center;
+  justify-content: right;
+  display: flex;
+}
+.formula h3{
+  font-size: 1.5vw;
+}
+
+.contact{
+  z-index: 5;
+  width: 60%;
+  position: relative;
+  padding-bottom: 1%;
+  flex-wrap: wrap;
+  color: blueviolet;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2vw;
+  font-family: monospace;
+  border-left: 10px solid black;
+  border-right: 10px solid black;
+  border-radius: 240px 240px 0px 0px;
+  margin-left: 20%;
+}
+  

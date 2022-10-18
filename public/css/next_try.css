@@ -1,0 +1,152 @@
+html{
+    background-color: white;
+    z-index: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: rgb(80, 80, 80);
+  }
+
+header{
+    background-color: #a5f7b7;
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:left;
+    border-bottom: #008000 solid 4px;
+}
+
+header .title{
+    margin-left: 30px;
+    color: #006000;
+    font-size: 22px;
+}
+
+header .title p{
+    margin-bottom: 10px;
+}
+
+header h1{
+    font-size: 50px;
+    margin-bottom: 0px;
+    position: center;
+    display: flex;
+    flex-direction:row;
+    text-shadow: grey 3px 3px 3px;
+}
+
+header h1 .loctype1{
+    color: #006000;
+}
+
+header h1 .loctype2{
+    color:#a10040;
+}
+
+header .navigation{
+    margin-right: 65px;
+    margin-top: 20px;
+    position: fixed;
+    top: 20px;
+    right: 18px;
+    
+}
+
+
+.navigation {
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+}
+  
+
+.menu {
+    position: relative;
+    display: inline-block;
+    background-color: #a5f7b7;
+    overflow: hidden;
+    font-size: 20px;
+    border: 2px solid #006000;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    background-color: #008000;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.menu-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.menu-content a:hover {background-color: #ddd;}
+
+.navigation:hover .menu-content {display: block;}
+
+.navigation:hover .menu {background-color: #3e8e41;} 
+
+.roses{
+    box-sizing: border-box;
+    margin: 20px 0px 0px 0px;
+    padding: 10px 15px 5px;
+}
+
+.roses .roses-types{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;    
+    align-items:center;
+    list-style: none outside;
+}
+
+.roses .category{
+    margin-bottom: 40px;
+    border: 1px solid #008000;
+    text-align: center;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.roses .category-title{
+    color:#006000;
+    font-size: 19px;
+}
+
+.roses .count{
+    padding: 0.125em 0.25em;
+    text-decoration: none;
+    background-color: white;
+    color:#006000;
+    font-size: 19px;
+}
+
+.about{
+    box-sizing: border-box;
+    margin: 10px 40px 0px 40px;
+    padding: 10px 15px 5px;
+    border: 1px #006000 solid;
+}
+
+h1{
+    text-align: center;
+}
+
+footer{
+    border-top: #006000 solid 4px;
+    background-color: #a5f7b7;
+}
+
+.contact{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+}

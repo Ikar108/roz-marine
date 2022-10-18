@@ -1,0 +1,14 @@
+.Modern-Slider {
+    width: 300px;
+    height: 300px;
+    margin-left: 40px;
+    margin-top: 15px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.Modern-Slider .item .img-fill {
+    height: 300px;
+    background: #000;
+}

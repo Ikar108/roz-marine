@@ -1,12 +1,36 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Render, UseInterceptors } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { LoadTimeInterceptor } from './interceptors/load-time.interceptor'
+import { Category } from './shop/entities/category.entity'
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    @InjectRepository(Category)
+    private categoryRepository: Repository<Category>
+  ) { }
 
+  @UseInterceptors(LoadTimeInterceptor)
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Render('index')
+  async getMain() {
+    let categories = await this.categoryRepository.find({
+      relations: {
+        image: true,
+        slider_image: true,
+        //products: true
+      }
+    })
+
+    // categories.forEach(element => {
+    //   element.count = element.products.length
+    // })
+    //
+    //await this.categoryRepository.save(categories)
+
+    return {
+      categories: categories
+    }
   }
 }
