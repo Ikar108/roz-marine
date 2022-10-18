@@ -1,0 +1,20 @@
+<section class="roses">
+  <h1 class="category-title">{{name}}</h1>
+
+  <div class="Modern-Slider" class="category">
+    {{#each image_paths}}
+    <div class="item">
+      <div class="img-fill">
+        <img loading="lazy" src="{{this}}" alt="{{../name}}" sizes="(max-width: 300px) 85vw, 300px" width="300"
+          height="300">
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="description" class="category">
+    <h2>Описание</h2>
+
+    <p>{{description}}</p>
+  </div>
+</section>

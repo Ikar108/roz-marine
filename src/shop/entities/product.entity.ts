@@ -18,9 +18,9 @@ export class Product {
   public preview_path: string
 
 
-  @ManyToMany(() => Category)
+  @ManyToMany(() => Category, (category) => category.products)
   public categories: Category[]
 
-  @OneToMany(() => ProductImage, (product_image) => product_image.product_image_id)
+  @OneToMany(() => ProductImage, (product_image) => product_image.product)
   public product_images: ProductImage[]
 }

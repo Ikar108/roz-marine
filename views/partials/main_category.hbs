@@ -1,0 +1,13 @@
+<section class="roses">
+  <div class="roses-types">
+    {{#each products}}
+    <li class="category">
+      <a href="/product/{{product_id}}"><img loading="lazy" src="{{preview_path}}" alt="{{name}}"
+          sizes="(max-width: 300px) 85vw, 300px" width="300" height="300">
+        <h2 class="category-title">
+          {{name}}</h2>
+      </a>
+    </li>
+    {{/each}}
+  </div>
+</section>

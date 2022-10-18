@@ -28,7 +28,7 @@ export class Category {
   })
   public image: ImageEntity
 
-  @OneToOne(() => ImageEntity, (image) => image.image_id)
+  @OneToOne(() => ImageEntity)
   @JoinColumn({
     name: "slider_image_id",
     referencedColumnName: "image_id",
@@ -36,7 +36,7 @@ export class Category {
   })
   public slider_image: ImageEntity
 
-  @ManyToMany(() => Product, (product) => product.product_id)
+  @ManyToMany(() => Product, (product) => product.categories)
   @JoinTable({ name: "product_category" })
   public products: Product[]
 }

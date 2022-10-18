@@ -2,8 +2,9 @@
   <div class="roses-types">
     {{#each categories}}
     <li class="category">
-      <a href="/category/{{category_id}}"><img loading="lazy" src="{{image.path}}" alt={{name}}
-          sizes="(max-width: 300px) 85vw, 300px" width="300" height="300">
+      <a href="/category/{{category_id}}">
+        <img loading="lazy" src="{{image.path}}" alt={{name}} sizes="(max-width: 300px) 85vw, 300px" width="300"
+          height="300">
         <h2 class="category-title"> {{name}} <mark class="count">({{count}})</mark></h2>
       </a>
     </li>
