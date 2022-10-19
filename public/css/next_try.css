@@ -1,56 +1,54 @@
-html{
+html {
     background-color: white;
     z-index: 0;
     font-family: 'Courier New', Courier, monospace;
     font-family: 'Roboto Condensed', sans-serif;
     color: rgb(80, 80, 80);
-  }
+}
 
-header{
+header {
     background-color: #a5f7b7;
     position: relative;
     display: flex;
-    flex-direction:row;
-    justify-content:left;
+    flex-direction: row;
+    justify-content: left;
     border-bottom: #008000 solid 4px;
 }
 
-header .title{
+header .title {
     margin-left: 30px;
     color: #006000;
     font-size: 22px;
 }
 
-header .title p{
+header .title p {
     margin-bottom: 10px;
 }
 
-header h1{
+header h1 {
     font-size: 50px;
     margin-bottom: 0px;
     position: center;
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     text-shadow: grey 3px 3px 3px;
 }
 
-header h1 .loctype1{
+header h1 .loctype1 {
     color: #006000;
 }
 
-header h1 .loctype2{
-    color:#a10040;
+header h1 .loctype2 {
+    color: #a10040;
 }
 
-header .navigation{
+header .navigation {
     margin-right: 65px;
     margin-top: 20px;
     position: fixed;
     top: 20px;
     right: 18px;
-    
 }
-
 
 .navigation {
     color: white;
@@ -58,7 +56,6 @@ header .navigation{
     font-size: 20px;
     border: none;
 }
-  
 
 .menu {
     position: relative;
@@ -74,7 +71,7 @@ header .navigation{
     position: absolute;
     background-color: #008000;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -87,27 +84,33 @@ header .navigation{
     text-align: left;
 }
 
-.menu-content a:hover {background-color: #ddd;}
+.menu-content a:hover {
+    background-color: #ddd;
+}
 
-.navigation:hover .menu-content {display: block;}
+.navigation:hover .menu-content {
+    display: block;
+}
 
-.navigation:hover .menu {background-color: #3e8e41;} 
+.navigation:hover .menu {
+    background-color: #3e8e41;
+}
 
-.roses{
+.roses {
     box-sizing: border-box;
     margin: 20px 0px 0px 0px;
     padding: 10px 15px 5px;
 }
 
-.roses .roses-types{
+.roses .roses-types {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;    
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     list-style: none outside;
 }
 
-.roses .category{
+.roses .category {
     margin-bottom: 40px;
     border: 1px solid #008000;
     text-align: center;
@@ -115,38 +118,51 @@ header .navigation{
     margin-bottom: 40px;
 }
 
-.roses .category-title{
-    color:#006000;
+.roses .category-title {
+    color: #006000;
     font-size: 19px;
 }
 
-.roses .count{
+.roses .count {
     padding: 0.125em 0.25em;
     text-decoration: none;
     background-color: white;
-    color:#006000;
+    color: #006000;
     font-size: 19px;
 }
 
-.about{
+.about {
     box-sizing: border-box;
     margin: 10px 40px 0px 40px;
     padding: 10px 15px 5px;
     border: 1px #006000 solid;
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
-footer{
+footer {
     border-top: #006000 solid 4px;
     background-color: #a5f7b7;
 }
 
-.contact{
+.contact {
     position: relative;
     display: flex;
-    flex-direction:row;
-    justify-content:space-around;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-center h1 {
+    margin-top: 60px;
+}
+
+.admin-add-image {
+    max-height: 200px;
+    margin: 10px;
 }

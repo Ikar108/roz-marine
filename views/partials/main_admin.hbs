@@ -1,0 +1,90 @@
+<h1>Добавить товар</h1>
+<form id="create_product_form">
+  <p>Наименование:</p>
+  <input type="text" name="name">
+  <p>Описание:</p>
+  <input type="text" name="description">
+  <p>Категория:</p>
+  <p>
+    <select name="category">
+      <option value="">Без категории</option>
+      {{#each categories}}
+      <option value="{{category_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </p>
+  <p id="product_image_container"></p>
+  <p>Выберите изображения:</p>
+  <input id="product_image_files" type="file" name="image_files" multiple>
+  <p><input id="create_product" type="submit" value="Добавить"></p>
+</form>
+
+<script>
+  //const socket = io();
+</script>
+
+<h1>Удалить товар</h1>
+<form>
+  <p>ID:</p>
+  <input type="text" name="id">
+  <p><input type="submit" value="Удалить"></p>
+</form>
+
+<h1>Добавить категорию</h1>
+<form>
+  <p>Наименование:</p>
+  <input type="text" name="name">
+  <p>Описание:</p>
+  <p>Выберите изображение:</p>
+  <input type="file" name="image_file">
+  <p>Выберите изображение для слайдера:</p>
+  <input type="file" name="slider_image_file">
+  <p><input type="submit" value="Добавить"></p>
+</form>
+
+<h1>Удалить категорию</h1>
+<form>
+  <p>
+    <select name="category">
+      <option value="">Не выбрана</option>
+      {{#each categories}}
+      <option value="{{category_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </p>
+  <p><input type="submit" value="Удалить"></p>
+</form>
+
+<h1>Добавить товары в категорию</h1>
+<form>
+  <p>Категория:</p>
+  <p>
+    <select name="category">
+      <option value="">Без категории</option>
+      {{#each categories}}
+      <option value="{{category_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </p>
+  <p>Товары (ID):</p>
+  <input type="text" name="product_ids">
+  <p><input type="submit" value="Добавить"></p>
+</form>
+
+<h1>Удалить товары из категории</h1>
+<form>
+  <p>Категория:</p>
+  <p>
+    <select name="category">
+      <option value="">Без категории</option>
+      {{#each categories}}
+      <option value="{{category_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </p>
+  <p>Товары (ID):</p>
+  <input type="text" name="product_ids">
+  <p><input type="submit" value="Удалить"></p>
+</form>
+
+<script src="/js/admin.js"></script>
