@@ -1,32 +1,28 @@
-import { Controller, Get, Post, Render, UploadedFiles, UseInterceptors } from '@nestjs/common'
+import { Controller, Get, Post, Render, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common'
 import { FilesInterceptor } from '@nestjs/platform-express'
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger'
-import { InjectRepository } from '@nestjs/typeorm'
+import { SessionContainer } from 'supertokens-node/recipe/session'
 import { diskStorage } from 'multer'
 import { FilesUploadDto } from 'src/admin/dtos/file_upload.dto'
-import { Category } from 'src/shop/entities/category.entity'
-import { Repository } from 'typeorm'
+import { AuthGuard } from 'src/auth/auth.guard'
+import { Session } from 'src/auth/session.decorator'
 import { GetAdminPageDto } from './dtos/get_admin_page.dto'
+import { AdminService } from './admin.service'
 
 @Controller('admin')
 export class AdminController {
-  constructor(
-    @InjectRepository(Category)
-    private categoryRepository: Repository<Category>
-  ) { }
+  constructor(private adminService: AdminService) { }
 
+  @UseGuards(new AuthGuard())
   @Get()
   @Render('admin')
-  async getAdminPage(): Promise<GetAdminPageDto> {
-    let categories = await this.categoryRepository.find({
-      relations: {
-        products: true,
-        image: false
-      }
-    })
-    return {
-      categories: categories
-    }
+  async getAdminPage(@Session() session: SessionContainer): Promise<GetAdminPageDto> {
+    return await this.adminService.getAdminPage(session)
+  }
+
+  @Get('auth')
+  @Render('auth')
+  getAuthPage(): void {
   }
 
   @ApiOperation({

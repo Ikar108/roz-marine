@@ -14,10 +14,10 @@ $("#create_product_image_files").change(function() {
 $("#update_product_image_files").change(function() {
     let product_image_container = $('#update_product_image_container');
     product_image_container.children().remove();
-    if (this.files.length == 1) {
+    if (this.files.length == 10) {
         showAddedImages(this.files, product_image_container);
     } else {
-        alert("Only one file can be loaded!")
+        alert("Can load no more than 10 files!")
         this.value = '';
     }
 });
@@ -27,7 +27,7 @@ $("#update_product_image_files").change(function() {
 $("#create_product_form").on('submit', function(e) {
     e.preventDefault()
     let form = new FormData(e.target)
-    sendImages('product', $('#product_image_files')[0].files)
+    sendImages('product', $('#create_product_image_files')[0].files)
         .then(function(data) {
             if (data) {
                 let create_product_dto = {
@@ -54,7 +54,7 @@ socket.on("create_product_error", () => {
 $("#update_product_form").on('submit', function(e) {
     e.preventDefault()
     let form = new FormData(e.target)
-    sendImages('product', $('#product_image_files')[0].files)
+    sendImages('product', $('#update_product_image_files')[0].files)
         .then(function(data) {
             if (data) {
                 let update_product_dto = {

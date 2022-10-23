@@ -3,7 +3,9 @@ import { NestExpressApplication } from '@nestjs/platform-express'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { join } from 'path'
 import { AppModule } from './app.module'
+import supertokens from 'supertokens-node'
 import { LoadTimeInterceptor } from './interceptors/load-time.interceptor'
+import { SupertokensExceptionFilter } from './auth/auth.filter'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
@@ -21,6 +23,14 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'))
   app.setViewEngine('hbs')
   hbs.registerPartials(join(__dirname, '..', 'views/partials'))
+
+  app.enableCors({
+    origin: ['http://127.0.0.1:3000'],
+    allowedHeaders: ['content-type', ...supertokens.getAllCORSHeaders()],
+    credentials: true,
+  })
+
+  app.useGlobalFilters(new SupertokensExceptionFilter())
 
   await app.listen(3000)
 }

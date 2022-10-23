@@ -1,0 +1,1 @@
+socket.emit('render_data')

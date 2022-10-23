@@ -37,6 +37,7 @@
         "require": "^0.4.4",
         "rimraf": "^3.0.2",
         "rxjs": "^7.2.0",
+        "supertokens-node": "^12.0.5",
         "typeorm": "^0.3.10",
         "typeorm-naming-strategies": "^4.1.0"
     },

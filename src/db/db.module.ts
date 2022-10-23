@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Category } from 'src/shop/entities/category.entity';
-import { ImageEntity } from 'src/shop/entities/image.entity';
-import { Product } from 'src/shop/entities/product.entity';
-import { ProductImage } from 'src/shop/entities/product_image.entity';
-import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { AdminEntity } from 'src/admin/entities/admin.entity'
+import { Category } from 'src/shop/entities/category.entity'
+import { ImageEntity } from 'src/shop/entities/image.entity'
+import { Product } from 'src/shop/entities/product.entity'
+import { ProductImage } from 'src/shop/entities/product_image.entity'
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 
 
 @Module({
@@ -16,7 +17,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
       username: 'ikar108',
       password: process.env.db_password,
       database: 'roz_marine_database',
-      entities: [Category, ImageEntity, ProductImage, Product],
+      entities: [Category, ImageEntity, ProductImage, Product, AdminEntity],
       namingStrategy: new SnakeNamingStrategy(),
       synchronize: true,
       extra: {

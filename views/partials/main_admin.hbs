@@ -37,7 +37,7 @@
   <p id="update_product_image_container"></p>
   <p>Выберите изображения:</p>
   <input id="update_product_image_files" type="file" name="image_files" multiple>
-  <p><input id="update_product" type="submit" value="Добавить"></p>
+  <p><input id="update_product" type="submit" value="Изменить"></p>
 </form>
 
 <h1>Удалить товар</h1>
@@ -125,21 +125,41 @@
 </form>
 
 <table class="admin-table">
-  <tr class="admin-table-row">
-    <td class="admin-table-element">Категория (ID)</td>
-    <td class="admin-table-element">Продукт (ID)</td>
-  </tr>
+  <thead>
+    <tr class="admin-table-row">
+      <td class="admin-table-element">Категория (ID)</td>
+      <td class="admin-table-element">Продукт (ID)</td>
+    </tr>
+  </thead>
 
-  {{#each categories}}
-  {{#each products}}
-  <tr class="category_{{../category_id}} product_{{product_id}} admin-table-row">
-    <td class="admin-table-element">{{../name}} ({{../category_id}}) </td>
-    <td class="admin-table-element">{{name}} ({{product_id}})</td>
-  </tr>
-  {{/each}}
-  {{/each}}
+  <tbody id="categories_table_container">
+  </tbody>
 </table>
+
+<table class="admin-table">
+  <thead>
+    <tr class="admin-table-row">
+      <td class="admin-table-element">Продукт (ID)</td>
+      <td class="admin-table-element">Описание </td>
+    </tr>
+  </thead>
+
+  <tbody id="products_table_container">
+  </tbody>
+</table>
+
+<h1>Добавить администратора</h1>
+<form id="admin_registration_form">
+  <p>Имя:</p>
+  <input id="new_admin_name" type="text" name="name" required>
+  <p>Login:</p>
+  <input id="new_admin_login" type="text" name="login" required>
+  <p>Password:</p>
+  <input id="new_admin_password" type="password" name="password" required>
+  <p><input id="add_new_admin" type="submit" value="Добавить"></p>
+</form>
 
 <script src="/js/admin.js"></script>
 <script src="/js/product.js"></script>
 <script src="/js/category.js"></script>
+<script src="/js/render_data.js"></script>

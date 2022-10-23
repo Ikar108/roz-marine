@@ -158,7 +158,7 @@ export class CategoryService {
 
     // How to find products in categories?
     let products_to_add: Product[] = [];
-    (await this.productRepository.find()).forEach((product) => {
+    (await this.productRepository.find({})).forEach((product) => {
       if (product_category_ids.indexOf(product.product_id) != -1) {
         products_to_add.push(product)
       }

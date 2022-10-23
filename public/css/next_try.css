@@ -171,7 +171,8 @@ footer {
 }
 
 .admin-table {
-    width: 50%;
+    margin-top: 20px;
+    width: 70%;
     border: 1px solid black;
 }
 
@@ -182,4 +183,8 @@ footer {
 .admin-table-element {
     border: 1px solid black;
     text-align: left;
+}
+
+a {
+    cursor: pointer;
 }

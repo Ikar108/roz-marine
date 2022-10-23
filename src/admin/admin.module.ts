@@ -12,9 +12,10 @@ import { AdminService } from './admin.service'
 import { CategoryService } from './category.service'
 import { AdminGateway } from './gateways/admin.gateway'
 import { ProductService } from './product.service'
+import { AdminEntity } from './entities/admin.entity'
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Category, Product, ProductImage, ImageEntity]), MulterModule],
+  imports: [TypeOrmModule.forFeature([Category, Product, ProductImage, ImageEntity, AdminEntity]), MulterModule],
   controllers: [AdminController, ProductController, CategoryController],
   providers: [AdminService, AdminGateway, ProductService, CategoryService]
 })

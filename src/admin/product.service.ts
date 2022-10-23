@@ -25,31 +25,6 @@ export class ProductService {
     private imageRepository: Repository<ImageEntity>
   ) { }
 
-  async getProduct(id: number): Promise<ProductDto> {
-    let product_entity = await this.productRepository.findOne({
-      where: {
-        product_id: id
-      }
-      ,
-      relations: {
-        categories: false,
-        product_images: {
-          image: true
-        }
-      }
-    })
-    let product_dto = {
-      name: product_entity.name,
-      description: product_entity.description,
-      image_paths: []
-    }
-    product_entity.product_images.forEach(product_image => {
-      product_dto.image_paths.push(product_image.image.path)
-    })
-
-    return product_dto
-  }
-
   async createProduct(create_product_dto: CreateProductDto): Promise<boolean> {
     let product = this.productRepository.create()
     product.name = create_product_dto.name
@@ -144,9 +119,9 @@ export class ProductService {
     category.products.push(product_to_update)
     category.count += 1
 
-    await this.categoryRepository.save(category)
-
     await this.productRepository.save(product_to_update)
+
+    await this.categoryRepository.save(category)
 
     return true
   }
