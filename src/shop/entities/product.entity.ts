@@ -8,7 +8,7 @@ export class Product {
   @PrimaryGeneratedColumn()
   public product_id: number
 
-  @Column({ nullable: true })
+  @Column({ nullable: false })
   public name: string
 
   @Column({ nullable: true })
@@ -17,10 +17,9 @@ export class Product {
   @Column({ nullable: true })
   public preview_path: string
 
-
   @ManyToMany(() => Category, (category) => category.products)
   public categories: Category[]
 
-  @OneToMany(() => ProductImage, (product_image) => product_image.product)
+  @OneToMany(() => ProductImage, (product_image) => product_image.product, { cascade: true })
   public product_images: ProductImage[]
 }

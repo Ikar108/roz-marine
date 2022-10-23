@@ -1,5 +1,10 @@
-// Send added product pictures to server
-async function sendProductImages(files) {
+// Websocket init
+const socket = io()
+
+// Send added pictures to server
+// Type in {product, category}. It's very important,
+// because controller want this!
+async function sendImages(type, files) {
     let maxFileSize = 5242880
     let Data = new FormData()
     $(files).each(function(index, file) {
@@ -8,13 +13,13 @@ async function sendProductImages(files) {
         }
     })
     return $.ajax({
-        url: '/admin/upload/product/images',
+        url: '/admin/upload/' + type + '/images',
         type: 'POST',
         data: Data,
         contentType: false,
         processData: false,
         success: function(data) {
-            alert('Изображения были успешно загружены')
+            //alert('Изображения были успешно загружены')
         },
         error: function(data) {
             alert('Ошибка загрузки изображений')
@@ -22,27 +27,8 @@ async function sendProductImages(files) {
     })
 };
 
-
-$("#create_product_form").on('submit', function(e) {
-    e.preventDefault()
-    let form = new FormData(e.target)
-    sendProductImages($('#product_image_files')[0].files)
-        .then(function(data) {
-            if (data) {
-                let create_product_dto = {
-                    name: form.get('name'),
-                    description: form.get('description'),
-                    category: form.get('category'),
-                    image_paths: data.file_paths
-                }
-                console.log(create_product_dto)
-                    //socket.emit('create_product', create_product_dto)
-            }
-        })
-})
-
-// Show added product pictures for admin
-function showAddedProductImages(files, image_container) {
+// Show added pictures for admin
+function showAddedImages(files, image_container) {
     if (files && files[0]) {
         $(files).each(function(index, file) {
             let reader = new FileReader();
@@ -53,14 +39,3 @@ function showAddedProductImages(files, image_container) {
         })
     }
 }
-
-$("#product_image_files").change(function() {
-    let product_image_container = $('#product_image_container');
-    product_image_container.children().remove();
-    if (this.files.length < 11) {
-        showAddedProductImages(this.files, product_image_container);
-    } else {
-        alert("Can't load more than 10 files!")
-        this.value = '';
-    }
-});

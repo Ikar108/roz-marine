@@ -6,5 +6,9 @@ export class CreateCategoryDto {
   public name: string
 
   @ApiProperty()
-  public product_ids: number[]
+  public image_path: string
+
+  @ApiProperty()
+  public slider_path: string
+
 }

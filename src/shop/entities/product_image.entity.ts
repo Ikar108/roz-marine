@@ -8,7 +8,7 @@ export class ProductImage {
   @PrimaryGeneratedColumn()
   public product_image_id: number
 
-  @ManyToOne(() => Product, (product) => product.product_images)
+  @ManyToOne(() => Product, (product) => product.product_images, { onDelete: 'CASCADE' })
   @JoinColumn({
     name: "product_id",
     referencedColumnName: "product_id",
@@ -16,7 +16,7 @@ export class ProductImage {
   })
   public product: Product
 
-  @OneToOne(() => ImageEntity)
+  @OneToOne(() => ImageEntity, { cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' })
   @JoinColumn({
     name: "image_id",
     referencedColumnName: "image_id",

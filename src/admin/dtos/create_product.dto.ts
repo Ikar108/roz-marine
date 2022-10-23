@@ -9,7 +9,7 @@ export class CreateProductDto {
   public description: string
 
   @ApiProperty()
-  public category: number
+  public category_id: number
 
   @ApiProperty()
   public image_paths: string[]
