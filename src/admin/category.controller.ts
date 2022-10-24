@@ -58,7 +58,6 @@ export class CategoryController {
   @ApiOperation({
     summary: 'Delete category from catalogue'
   })
-  @ApiParam({ name: 'id', type: 'numeric' })
   @ApiBody({
     type: DeleteCategoryDto,
     description: 'The category structure',
@@ -100,7 +99,6 @@ export class CategoryController {
   @ApiOperation({
     summary: 'Delete products from category'
   })
-  @ApiParam({ name: 'id', type: 'numeric' })
   @ApiBody({
     type: DeleteProductCategoryDto,
     description: 'The category structure',

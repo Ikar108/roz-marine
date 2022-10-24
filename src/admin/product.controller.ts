@@ -71,7 +71,7 @@ export class ProductController {
     description: 'The product was not found.'
   })
   @Delete()
-  async deleteProduct(product_dto: DeleteProductDto): Promise<void> {
+  async deleteProduct(@Body() product_dto: DeleteProductDto): Promise<void> {
     await this.productService.deleteProduct(product_dto)
   }
 }
