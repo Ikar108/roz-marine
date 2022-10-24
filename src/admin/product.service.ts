@@ -107,21 +107,22 @@ export class ProductService {
       await this.productImageRepository.save(product_image)
     }
 
-    let category = await this.categoryRepository.findOne({
-      relations: {
-        products: true,
-      },
-      where: {
-        category_id: update_product_dto.category_id
-      }
-    })
+    // console.log(update_product_dto)
+    // let category = await this.categoryRepository.findOne({
+    //   relations: {
+    //     products: true,
+    //   },
+    //   where: {
+    //     category_id: update_product_dto.category_id
+    //   }
+    // })
 
-    category.products.push(product_to_update)
-    category.count += 1
+    // category.products.push(product_to_update)
+    // category.count += 1
 
     await this.productRepository.save(product_to_update)
 
-    await this.categoryRepository.save(category)
+    //await this.categoryRepository.save(category)
 
     return true
   }

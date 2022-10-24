@@ -11,8 +11,8 @@ export class UpdateProductDto {
   @ApiProperty()
   public description: string
 
-  @ApiProperty()
-  public category_id: number
+  //@ApiProperty()
+  //public category_id: number
 
   @ApiProperty()
   public image_paths: string[]

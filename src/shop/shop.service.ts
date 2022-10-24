@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common"
+import { Injectable, NotFoundException } from "@nestjs/common"
 import { InjectRepository } from "@nestjs/typeorm"
 import { Repository } from "typeorm"
 import { GetCategoryDto } from "./dtos/get_category.dto"
@@ -54,6 +54,9 @@ export class ShopService {
         }
       }
     })
+    if (category_entity == null) {
+      throw new NotFoundException("Con not find this category!")
+    }
     return {
       name: category_entity.name,
       products: category_entity.products

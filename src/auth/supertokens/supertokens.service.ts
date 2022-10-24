@@ -16,8 +16,14 @@ export class SupertokensService {
       },
       recipeList: [
         EmailPassword.init(),
-        Session.init(),
-      ],
+        Session.init({
+          errorHandlers: {
+            onUnauthorised: async (mes, req, res) => {
+              res.original.redirect("/admin/auth")
+            }
+          }
+        })
+      ]
     })
   }
 }

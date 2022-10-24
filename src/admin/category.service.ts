@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { CreateCategoryDto } from 'src/admin/dtos/create_category.dto'
 import { DeleteCategoryDto } from 'src/admin/dtos/delete_category.dto'
 import { UpdateCategoryDto } from 'src/admin/dtos/update_category.dto'
-import { Repository } from 'typeorm'
+import { In, Repository } from 'typeorm'
 import { Category } from '../shop/entities/category.entity'
 import { ImageEntity } from '../shop/entities/image.entity'
 import { Product } from '../shop/entities/product.entity'
@@ -27,8 +27,15 @@ export class CategoryService {
     let category = this.categoryRepository.create()
     category.name = create_category_dto.name
 
-    let image: ImageEntity = this.imageRepository.create({ path: create_category_dto.image_path })
-    let slider: ImageEntity = this.imageRepository.create({ path: create_category_dto.slider_path })
+    let image: ImageEntity = null
+    let slider: ImageEntity = null
+
+    if (create_category_dto.image_path != '') {
+      image = this.imageRepository.create({ path: create_category_dto.image_path })
+    }
+    if (create_category_dto.image_path != '') {
+      slider = this.imageRepository.create({ path: create_category_dto.slider_path })
+    }
 
     await this.imageRepository.save([image, slider])
 
@@ -75,8 +82,15 @@ export class CategoryService {
     await this.categoryRepository.save(category_to_update)
     await this.imageRepository.delete(images_to_delete)
 
-    let image: ImageEntity = this.imageRepository.create({ path: update_category_dto.image_path })
-    let slider: ImageEntity = this.imageRepository.create({ path: update_category_dto.slider_path })
+    let image: ImageEntity = null
+    let slider: ImageEntity = null
+
+    if (update_category_dto.image_path != '') {
+      image = this.imageRepository.create({ path: update_category_dto.image_path })
+    }
+    if (update_category_dto.slider_path != '') {
+      slider = this.imageRepository.create({ path: update_category_dto.slider_path })
+    }
 
     category_to_update.name = update_category_dto.name
     category_to_update.image = image
@@ -141,7 +155,7 @@ export class CategoryService {
   }
 
 
-  async addProductCategory(add_product_category_dto: AddProductCategoryDto): Promise<boolean> {
+  async addProductCategory(add_product_category_dto: AddProductCategoryDto): Promise<void> {
     let category_to_change = await this.categoryRepository.findOne({
       where: {
         category_id: add_product_category_dto.category_id
@@ -151,25 +165,22 @@ export class CategoryService {
       }
     })
 
-    let product_category_ids: number[] = []
+    let product_ids: number[] = []
     add_product_category_dto.product_ids.split(' ').forEach((id) => {
-      product_category_ids.push(parseInt(id))
+      product_ids.push(parseInt(id))
     })
 
     // How to find products in categories?
-    let products_to_add: Product[] = [];
-    (await this.productRepository.find({})).forEach((product) => {
-      if (product_category_ids.indexOf(product.product_id) != -1) {
-        products_to_add.push(product)
+    let products_to_add: Product[] = await this.productRepository.find({
+      where: {
+        product_id: In(product_ids)
       }
     })
 
-    category_to_change.products.concat(products_to_add)
+    category_to_change.products = category_to_change.products.concat(products_to_add)
     category_to_change.count += products_to_add.length
 
     await this.categoryRepository.save(category_to_change)
-
-    return true
   }
 
   async deleteProductCategory(delete_product_category_dto: DeleteProductCategoryDto): Promise<boolean> {
@@ -187,11 +198,11 @@ export class CategoryService {
       product_category_ids.push(parseInt(id))
     })
     // How to save canges in categories?
-    let products_to_delete: number[] = []
+    //let products_to_delete: number[] = []
     category_to_change.products.forEach((product) => {
       if (product_category_ids.indexOf(product.product_id) != -1) {
         // if (product.categories.length < 2) {
-        products_to_delete.push(product.product_id)
+        //products_to_delete.push(product.product_id)
         //   product.categories.forEach((category) => {
         //     category.count -= 1
         //   })
@@ -206,7 +217,7 @@ export class CategoryService {
 
     await this.categoryRepository.save(category_to_change)
 
-    await this.productRepository.delete(products_to_delete)
+    //await this.productRepository.delete(products_to_delete)
 
     return true
   }

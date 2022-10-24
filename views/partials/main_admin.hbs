@@ -26,14 +26,14 @@
   <input type="text" name="name" required>
   <p>Описание:</p>
   <input type="text" name="description">
-  <p>Категория:</p>
+  {{!-- <p>Категория:</p>
   <p>
     <select name="category_id">
       {{#each categories}}
       <option value="{{category_id}}">{{name}}</option>
       {{/each}}
     </select>
-  </p>
+  </p> --}}
   <p id="update_product_image_container"></p>
   <p>Выберите изображения:</p>
   <input id="update_product_image_files" type="file" name="image_files" multiple>

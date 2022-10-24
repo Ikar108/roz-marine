@@ -14,7 +14,7 @@ $("#create_product_image_files").change(function() {
 $("#update_product_image_files").change(function() {
     let product_image_container = $('#update_product_image_container');
     product_image_container.children().remove();
-    if (this.files.length == 10) {
+    if (this.files.length < 11) {
         showAddedImages(this.files, product_image_container);
     } else {
         alert("Can load no more than 10 files!")
@@ -61,7 +61,7 @@ $("#update_product_form").on('submit', function(e) {
                     product_id: form.get('product_id'),
                     name: form.get('name'),
                     description: form.get('description'),
-                    category: form.get('category_id'),
+                    //category: form.get('category_id'),
                     image_paths: data.file_paths
                 }
                 console.log(update_product_dto)
